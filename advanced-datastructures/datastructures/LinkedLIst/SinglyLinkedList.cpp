@@ -44,6 +44,17 @@ public:
         head = newNode;
     }
 
+    void insertAfter(struct Node *prevNode, int data){
+        if(prevNode == NULL){
+            cout<<"Invalid  node pointer"<<endl;
+        }
+
+        Node *newNode = new Node();
+        newNode->data = data;
+        newNode->next = prevNode->next;
+        prevNode->next = newNode;
+    }
+
     void display(){
         Node *temp = head;
         while (temp != NULL){
@@ -64,6 +75,37 @@ public:
         return false;
     }
 
+    void deleteFromHead(){
+        if(head==nullptr){
+            cout<<"Empty linked list!"<<endl;
+        }
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+
+    }
+
+    void deleteFromEnd(){
+        Node *ptr;
+        if(head == NULL)
+            cout<<"Empty list"<<endl;
+        else if(head->next == NULL){
+            head = NULL;
+            delete head;
+        }
+        else{
+            Node *temp = head;
+            while (temp->next !=NULL){
+                ptr = temp;
+                temp = temp->next;
+            }
+            ptr->next = NULL;
+            delete ptr;
+            cout<<"Deleted node: "<<ptr->data<<endl;
+        }
+
+    }
+
 
 };
 
@@ -76,6 +118,8 @@ int main() {
     singlyLinkedList.insertAtTail(52);
     singlyLinkedList.insertAtHead(2);
 
+//    Node *head = NULL;
+//    singlyLinkedList.insertAfter(head->next->next, 67);
 
     singlyLinkedList.display();
 
@@ -85,6 +129,12 @@ int main() {
         cout<<"key not found!"<<endl;
     }
     singlyLinkedList.display();
+
+    singlyLinkedList.deleteFromHead();
+    singlyLinkedList.display();
+
+//    singlyLinkedList.deleteFromEnd();
+//    singlyLinkedList.display();
     return 0;
 }
 

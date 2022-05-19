@@ -37,6 +37,8 @@ void display(){
         ptr = ptr->next;
     } while (ptr->next !=NULL);
 }
+
+
 void deleteNode(){
     if(front ==NULL){
         cout<<"  List is empty "<<endl;
@@ -45,6 +47,8 @@ void deleteNode(){
     front = front->next;
     delete temp;
 }
+
+
 int main() {
     Node * head = NULL;
     insertNewNode(head,20);
